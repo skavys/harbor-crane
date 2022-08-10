@@ -1,8 +1,8 @@
 {
     "name": "skavys/harbor-crane",
     "type": "project",
-    "description": "Porto Generator scripts",
-    "keywords": ["porto", "generator", "scripts", "skavys", "skavyš", "cli"],
+    "description": "Porto Generator commands",
+    "keywords": ["porto", "generator", "commands", "skavys", "skavyš", "cli"],
     "homepage": "https://github.com/skavys/harbor-crane",
     "license": "MIT",
     "authors": [
@@ -38,6 +38,21 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "style": "./vendor/bin/pint --test -v",
+        "fix-style": "./vendor/bin/pint",
+        "analyse": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
+        "tests": "XDEBUG_MODE=develop,coverage,debug,profile,trace php harbor-crane test",
+        "tests_coverage": "XDEBUG_MODE=develop,coverage,debug,profile,trace php harbor-crane test --coverage --min=80",
+        "sec-advisory": "composer update --dry-run roave/security-advisories",
+        "all": [
+            "@composer validate --strict",
+            "@sec-advisory",
+            "@style",
+            "@analyse",
+            "@tests"
+        ]
     },
     "config": {
         "preferred-install": "dist",
