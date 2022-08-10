@@ -64,7 +64,7 @@ jobs:
   tests:
     needs: [ env-setup ]
     name: Tests
-    uses: skavys/.github/.github/workflows/_tests.yml@master
+    uses: .github/workflows/_tests.yml
     with:
       cache_key: ${{ needs.env-setup.outputs.cache-key }}
       extensions: ${{ needs.env-setup.outputs.extensions }}
