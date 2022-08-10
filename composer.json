@@ -2,7 +2,7 @@
     "name": "skavys/harbor-crane",
     "type": "project",
     "description": "Porto Generator commands",
-    "keywords": ["porto", "generator", "commands", "skavys", "skavyš", "cli"],
+    "keywords": ["porto", "generator", "commands", "skavys", "cli"],
     "homepage": "https://github.com/skavys/harbor-crane",
     "license": "MIT",
     "authors": [
