@@ -88,7 +88,4 @@ jobs:
           composer-options: "--prefer-dist"
 
       - name: Run test suite
-        run: |
-#          php -r "file_exists('.env') || copy('.env.example', '.env');"
-#          php artisan key:generate
-          php harbor-crane test --coverage --min=${{ inputs.min_coverage }}
+        run: php harbor-crane test --coverage --min=${{ inputs.min_coverage }}
