@@ -1,7 +1,10 @@
 includes:
     - ./vendor/nunomaduro/larastan/extension.neon
+    - ./phpstan-baseline.neon
 
 parameters:
+    stubFiles:
+        - ./stubs/symfony/console/Input/InputInterface.stub
     paths:
         - app
     level: 9

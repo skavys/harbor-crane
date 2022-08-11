@@ -2,6 +2,8 @@
 /.idea
 /.vscode
 /.vagrant
+/src
 .phpunit.result.cache
 phpunit.xml
 phpstan.neon
+harbor-crane.json

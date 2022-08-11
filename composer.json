@@ -19,6 +19,7 @@
     },
     "require": {
         "php": "^8.1",
+        "laminas/laminas-text": "^2.9",
         "laravel-zero/framework": "^9.0",
         "nunomaduro/termwind": "^1.3"
     },
@@ -40,14 +41,14 @@
         }
     },
     "scripts": {
-        "style": "./vendor/bin/pint --test -v",
-        "fix-style": "./vendor/bin/pint",
-        "analyse": "php -d memory_limit=-1 ./vendor/bin/phpstan analyse",
+        "style": "./vendor/bin/pint --test -v --ansi",
+        "fix-style": "./vendor/bin/pint --ansi",
+        "analyse": "./vendor/bin/phpstan analyse --ansi --memory-limit=-1",
         "tests": "XDEBUG_MODE=develop,coverage,debug,profile,trace php harbor-crane test",
-        "tests_coverage": "XDEBUG_MODE=develop,coverage,debug,profile,trace php harbor-crane test --coverage --min=80",
-        "sec-advisory": "composer update --dry-run roave/security-advisories",
+        "tests-coverage": "@tests --coverage --min=80",
+        "sec-advisory": "composer update roave/security-advisories --dry-run --ansi",
         "all": [
-            "@composer validate --strict",
+            "@composer validate --strict --ansi",
             "@sec-advisory",
             "@style",
             "@analyse",
