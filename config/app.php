@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'Harbor-crane',
+    'name' => 'Harbor Crane',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,6 +55,9 @@ return [
 
     'providers' => [
         App\Providers\AppServiceProvider::class,
+        App\Providers\ActionsServiceProvider::class,
+        App\Providers\CommandsServiceProvider::class,
+        App\Providers\RepositoriesServiceProvider::class,
     ],
 
 ];

@@ -1,0 +1,30 @@
+<?php
+
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Symfony\Component\Console\Input;
+
+/**
+ * InputInterface is the interface implemented by all input classes.
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @method string __toString() Returns a stringified representation of the args passed to the command.
+ *                             InputArguments MUST be escaped as well as the InputOption values passed to the command.
+ */
+interface InputInterface
+{
+    /**
+     * Returns the option value for a given option name.
+     *
+     * @return string
+     */
+    public function getOption(string $name);
+}
