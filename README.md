@@ -14,10 +14,7 @@ Each command has following _global_ options:
 
 ## Available Commands
 
-```bash
-./vendor/bin/harbor-crane make:section
-./vendor/bin/harbor-crane make:container
-```
+Run `vendor/bin/harbor-crane` to see the list of available commands.
 
 ## Usage
 Run following command to create `AccountSection` section:

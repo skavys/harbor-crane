@@ -65,5 +65,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["builds/harbor-crane.phar"]
+    "bin": ["builds/harbor-crane"]
 }
