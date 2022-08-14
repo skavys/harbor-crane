@@ -52,7 +52,7 @@
             "@sec-advisory",
             "@style",
             "@analyse",
-            "@tests"
+            "@tests-coverage"
         ]
     },
     "config": {
