@@ -1,4 +1,4 @@
-    # Harbor Generator commands
+# Harbor Generator commands
 
 ## Introduction
 
