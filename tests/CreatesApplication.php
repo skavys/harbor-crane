@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Illuminate\Contracts\Console\Kernel;
+use App\Kernel;
 use Illuminate\Foundation\Application;
 
 trait CreatesApplication

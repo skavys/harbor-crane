@@ -28,7 +28,11 @@ trait CreateDirectory
             abort(1, sprintf('%s [%s] already exists.', $entity, $name));
         }
 
-        if (File::makeDirectory($path) === false) {
+        try {
+            if (File::makeDirectory($path) === false) {
+                abort(1, sprintf('%s [%s] could not be created.', $entity, $name));
+            }
+        } catch (\Exception $exception) {
             abort(1, sprintf('%s [%s] could not be created.', $entity, $name));
         }
 

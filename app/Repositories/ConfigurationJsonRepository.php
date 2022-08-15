@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Support\Harbor;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Console\Input\InputInterface;
 
 /**
  * Class ConfigurationJsonRepository
@@ -14,25 +13,20 @@ use Symfony\Component\Console\Input\InputInterface;
  */
 class ConfigurationJsonRepository
 {
-    private readonly string $configPath;
-
-    private readonly string|null $shipPath;
-
-    private readonly string|null $containersPath;
-
-    private readonly string|null $srcNamespace;
-
     /**
      * Creates a new Configuration Json Repository instance.
      *
-     * @param InputInterface $input
+     * @param string $configPath
+     * @param string|null $shipPath
+     * @param string|null $containersPath
+     * @param string|null $srcNamespace
      */
-    public function __construct(private readonly InputInterface $input)
-    {
-        $this->configPath = $this->input->getOption('config') ?: Harbor::path().'/harbor-crane.json';
-        $this->shipPath = $this->input->getOption('ship');
-        $this->containersPath = $this->input->getOption('containers');
-        $this->srcNamespace = $this->input->getOption('src-namespace');
+    public function __construct(
+        private readonly string $configPath,
+        private readonly ?string $shipPath = null,
+        private readonly ?string $containersPath = null,
+        private readonly ?string $srcNamespace = null
+    ) {
     }
 
     /**

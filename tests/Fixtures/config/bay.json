@@ -1,0 +1,5 @@
+{
+    "ship": "app/src/Ship",
+    "containers": "app/src/Containers",
+    "src-namespace": "App\\Bay\\"
+}

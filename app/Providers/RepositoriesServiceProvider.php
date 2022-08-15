@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\ConfigurationJsonRepository;
+use App\Support\Harbor;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Console\Input\InputInterface;
 
@@ -31,7 +32,14 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(ConfigurationJsonRepository::class, function () {
-            return new ConfigurationJsonRepository(resolve(InputInterface::class));
+            $input = resolve(InputInterface::class);
+
+            return new ConfigurationJsonRepository(
+                $input->getOption('config') ?: Harbor::path().'/harbor-crane.json',
+                $input->getOption('ship'),
+                $input->getOption('containers'),
+                $input->getOption('src-namespace')
+            );
         });
     }
 }
