@@ -12,6 +12,16 @@
 
 **Harbor Crane** is a tool to generate files and directories for [Porto][1] architecture pattern.
 
+## Installation
+
+You may install `Harbor Crane` via Composer:
+```bash
+composer require skavys/harbor-crane --dev
+```
+
+Alternatively, `Harbor Crane` has standalone version distributed as `PHAR` archive. You may download 
+`phar` version in `Assets` section of each [release][7]. 
+
 ## Configuration
 
 Each command has following _global_ options:
@@ -88,3 +98,4 @@ Harbor Crane is open-sourced software licensed under the [MIT license][6].
 [4]: https://github.com/Jampire
 [5]: https://github.com/skavys/harbor-crane/graphs/contributors
 [6]: LICENSE
+[7]: https://github.com/skavys/harbor-crane/releases
