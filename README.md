@@ -1,3 +1,11 @@
+<p align="center">
+    <a href="https://github.com/skavys/harbor-crane/actions/workflows/build.yml" target="_blank" title="build"><img src="https://github.com/skavys/harbor-crane/actions/workflows/build.yml/badge.svg?branch=master" alt="build"></a>
+    <a href="https://packagist.org/packages/skavys/harbor-crane" target="_blank" title="download"><img src="https://img.shields.io/packagist/dt/skavys/harbor-crane?style=flat-square" alt="download"></a>
+    <a href="https://github.com/skavys/harbor-crane/blob/stat/LICENSE" target="_blank" title="license"><img src="https://img.shields.io/github/license/skavys/harbor-crane?style=flat-square" alt="license"></a>
+    <a href="https://github.com/skavys/harbor-crane/releases" target="_blank" title="release"><img src="https://img.shields.io/github/v/release/skavys/harbor-crane?display_name=tag&sort=semver&style=flat-square" alt="release"></a>
+    <a href="https://packagist.org/packages/skavys/harbor-crane" target="_blank" title="php"><img src="https://img.shields.io/packagist/php-v/skavys/harbor-crane?style=flat-square" alt="php"></a>
+</p>
+
 # Harbor Generator commands
 
 ## Introduction
