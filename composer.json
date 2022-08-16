@@ -1,8 +1,8 @@
 {
     "name": "skavys/harbor-crane",
     "type": "project",
-    "description": "Porto Generator commands",
-    "keywords": ["porto", "generator", "commands", "skavys", "cli"],
+    "description": "Harbor Generator commands",
+    "keywords": ["harbor", "porto", "generator", "commands", "skavys", "cli"],
     "homepage": "https://github.com/skavys/harbor-crane",
     "license": "MIT",
     "authors": [
@@ -22,8 +22,8 @@
     },
     "require-dev": {
         "laminas/laminas-text": "^2.9",
-        "laravel/pint": "^1.0",
         "laravel-zero/framework": "^9.0",
+        "laravel/pint": "^1.0",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/larastan": "^2.1",
         "nunomaduro/termwind": "^1.3",

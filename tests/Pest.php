@@ -1,45 +1,87 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Test Case
-|--------------------------------------------------------------------------
-|
-| The closure you provide to your test functions is always bound to a specific PHPUnit test
-| case class. By default, that class is "PHPUnit\Framework\TestCase". Of course, you may
-| need to change it using the "uses()" function to bind a different classes or traits.
-|
-*/
+use App\Actions\MakeContainer;
+use App\Commands\MakeContainerCommand;
+use App\Commands\MakeSectionCommand;
+use App\Support\Harbor;
+use Illuminate\Foundation\Console\Kernel;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 
 uses(Tests\TestCase::class)->in('Feature');
+uses()
+    ->beforeEach(function () {
+        $this->path = Harbor::path().'/storage/tests';
+        $this->shipPath = $this->path.'/Ship';
+        $this->containersPath = $this->path.'/Containers';
+        $this->sectionName = 'AccountSection';
+        $this->containerName = 'User';
+        $this->configPath = dirname(__DIR__).'/tests/Fixtures/config/tests.json';
+        createStructure($this->shipPath, $this->containersPath);
+    })
+    ->afterEach(fn () => removeStructure($this->shipPath, $this->containersPath))
+    ->in('Feature/Commands');
 
-/*
-|--------------------------------------------------------------------------
-| Expectations
-|--------------------------------------------------------------------------
-|
-| When you're writing tests, you often need to check that values meet certain conditions. The
-| "expect()" function gives you access to a set of "expectations" methods that you can use
-| to assert different things. Of course, you may extend the Expectation API at any time.
-|
-*/
-
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
-
-/*
-|--------------------------------------------------------------------------
-| Functions
-|--------------------------------------------------------------------------
-|
-| While Pest is very powerful out-of-the-box, you may have some testing code specific to your
-| project that you don't want to repeat in every file. Here you can also expose helpers as
-| global functions to help you to reduce the number of lines of code in your test files.
-|
-*/
-
-function something()
+/**
+ * Runs the given console command.
+ *
+ * @param string  $command Command name
+ * @param array $arguments Command arguments and options
+ * @return array [status-code, actual-message]
+ */
+function run(string $command, array $arguments): array
 {
-    // ..
+    $commandInstance = match ($command) {
+        config('harbor_crane.commands.make-section.signature') => resolve(MakeSectionCommand::class),
+        config('harbor_crane.commands.make-container.signature') => resolve(MakeContainerCommand::class),
+    };
+
+    $input = new ArrayInput($arguments, $commandInstance->getDefinition());
+    $output = new BufferedOutput(OutputInterface::VERBOSITY_VERBOSE);
+
+    app()->singleton(InputInterface::class, fn () => $input);
+    app()->singleton(OutputInterface::class, fn () => $output);
+
+    $statusCode = resolve(Kernel::class)->call($command, $arguments, $output);
+    $output = Str::of($output->fetch())->replace('INFO', '')->trim()->toString();
+
+    return [$statusCode, $output];
+}
+
+/**
+ * Creates Porto structure for tests
+ *
+ * @param string $shipPath
+ * @param string $containersPath
+ * @return void
+ */
+function createStructure(string $shipPath, string $containersPath): void
+{
+    File::makeDirectory($shipPath);
+    File::makeDirectory($containersPath);
+}
+
+/**
+ * Removes Porto structure
+ *
+ * @param string $shipPath
+ * @param string $containersPath
+ * @return void
+ */
+function removeStructure(string $shipPath, string $containersPath): void
+{
+    File::isDirectory($shipPath) && File::deleteDirectory($shipPath);
+    File::isDirectory($containersPath) && File::deleteDirectory($containersPath);
+}
+
+/**
+ * @return array
+ */
+function containerSkeleton(): array
+{
+    return MakeContainer::skeleton();
 }

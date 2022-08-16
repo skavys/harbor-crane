@@ -58,6 +58,16 @@ class MakeContainer
     }
 
     /**
+     * Gets Container Skeleton
+     *
+     * @return array<int, string>
+     */
+    public static function skeleton(): array
+    {
+        return self::$skeleton;
+    }
+
+    /**
      * Creates new Container
      *
      * @return string New Container name
@@ -65,7 +75,7 @@ class MakeContainer
     public function execute(InputInterface $input = null): string
     {
         if ($input === null) {
-            $input = $this->input;
+            $input = $this->input; // @codeCoverageIgnore
         }
 
         /** @var string $name */

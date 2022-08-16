@@ -36,7 +36,7 @@ class MakeSection
     public function execute(InputInterface $input = null): string
     {
         if ($input === null) {
-            $input = $this->input;
+            $input = $this->input; // @codeCoverageIgnore
         }
 
         /** @var string $name */
