@@ -91,4 +91,4 @@ jobs:
         run: php harbor-crane test --coverage --min=${{ inputs.min_coverage }}
 
       - name: Scrutinizer code coverage
-        run: ocular.phar code-coverage:upload --ansi --format=php-clover ./build/coverage/log/coverage.xml -vvv
+        run: vendor/bin/ocular code-coverage:upload --ansi --format=php-clover ./build/coverage/log/coverage.xml -vvv
