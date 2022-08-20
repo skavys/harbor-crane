@@ -92,9 +92,5 @@ jobs:
 
       - name: Scrutinizer code coverage
         run: |
-          ls ./vendor/bin/
-          which ocular
-          which ocular.phar
-          where ocular
-          where ocular.phar
-          vendor/bin/ocular code-coverage:upload --ansi --format=php-clover ./build/coverage/log/coverage.xml -vvv
+          ls ~/.config/composer/vendor/bin/
+          ~/.config/composer/vendor/bin/ocular code-coverage:upload --ansi --format=php-clover ./build/coverage/log/coverage.xml -vvv
