@@ -89,3 +89,8 @@ jobs:
 
       - name: Run test suite
         run: php harbor-crane test --coverage --min=${{ inputs.min_coverage }}
+
+      - name: Scrutinizer code coverage
+        run: |
+          wget https://scrutinizer-ci.com/ocular.phar
+          php ocular.phar code-coverage:upload --format=php-clover build/coverage/log/coverage.xml
