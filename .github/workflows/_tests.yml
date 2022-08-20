@@ -93,4 +93,4 @@ jobs:
       - name: Scrutinizer code coverage
         run: |
           wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover build/coverage/log/coverage.xml
+          php ocular.phar code-coverage:upload --format=php-clover ./build/coverage/log/coverage.xml
