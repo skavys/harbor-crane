@@ -28,7 +28,8 @@
         "nunomaduro/larastan": "^2.1",
         "nunomaduro/termwind": "^1.3",
         "pestphp/pest": "^1.21.1",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "scrutinizer/ocular": "dev-master"
     },
     "autoload": {
         "psr-4": {
