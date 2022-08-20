@@ -14,7 +14,7 @@ on:
         type: number
       extensions:
         description: "PHP extensions"
-        default: simplexml, mbstring, sqlite3
+        default: simplexml, mbstring, sqlite3, scrutinizer/ocular:dev-master
         required: false
         type: string
       tools:
@@ -91,6 +91,4 @@ jobs:
         run: php harbor-crane test --coverage --min=${{ inputs.min_coverage }}
 
       - name: Scrutinizer code coverage
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover ./build/coverage/log/coverage.xml -vvv
+        run: ocular code-coverage:upload --ansi --format=php-clover ./build/coverage/log/coverage.xml -vvv
